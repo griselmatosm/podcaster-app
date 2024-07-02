@@ -1,11 +1,12 @@
 import styles from "./PodcastList.module.css";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { useTopPodcasts } from "../../hooks/useTopPodcasts";
+import { PodcastContext } from "../../contexts/PodcastContext";
 import { PodcastCard } from "../PodastCard/PodcastCard";
 
 const PodcastsList = () => {
-  const { data, isLoading, isError } = useTopPodcasts();
-  console.log("en el componente Podcast List", data);
+  const { podcasts, isError, isLoading } = useContext(PodcastContext);
+  console.log("en el componente Podcast List", podcasts);
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error loading podcasts</div>;
@@ -13,7 +14,7 @@ const PodcastsList = () => {
   return (
     <div>
       <ul className={styles.podcastList}>
-        {data.map((podcast) => (
+        {podcasts.map((podcast) => (
           <li key={podcast.id.attributes["im:id"]}>
             <Link to={`/podcast/${podcast.id.attributes["im:id"]}`}>
               <PodcastCard podcast={podcast} />
