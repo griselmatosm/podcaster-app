@@ -1,4 +1,4 @@
-import React from "react";
+import styles from "./PodcastList.module.css";
 import { Link } from "react-router-dom";
 import { useTopPodcasts } from "../../hooks/useTopPodcasts";
 import { PodcastCard } from "../PodastCard/PodcastCard";
@@ -12,7 +12,7 @@ const PodcastsList = () => {
 
   return (
     <div>
-      <ul>
+      <ul className={styles.podcastList}>
         {data.map((podcast) => (
           <li key={podcast.id.attributes["im:id"]}>
             <Link to={`/podcast/${podcast.id.attributes["im:id"]}`}>
