@@ -5,24 +5,21 @@ import { PodcastContext } from "../../contexts/PodcastContext";
 import { PodcastCard } from "../PodastCard/PodcastCard";
 
 const PodcastsList = () => {
-  const { podcasts, isError, isLoading } = useContext(PodcastContext);
-  console.log("en el componente Podcast List", podcasts);
+  const { filteredPodcasts, isError, isLoading } = useContext(PodcastContext);
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error loading podcasts</div>;
 
   return (
-    <div>
-      <ul className={styles.podcastList}>
-        {podcasts.map((podcast) => (
-          <li key={podcast.id.attributes["im:id"]}>
-            <Link to={`/podcast/${podcast.id.attributes["im:id"]}`}>
-              <PodcastCard podcast={podcast} />
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <ul className={styles.podcastList}>
+      {filteredPodcasts.map((podcast) => (
+        <li key={podcast.id.attributes["im:id"]}>
+          <Link to={`/podcast/${podcast.id.attributes["im:id"]}`}>
+            <PodcastCard podcast={podcast} />
+          </Link>
+        </li>
+      ))}
+    </ul>
   );
 };
 

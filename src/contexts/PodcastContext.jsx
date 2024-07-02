@@ -7,10 +7,16 @@ const PodcastProvider = ({ children }) => {
   const { data, isLoading, isError } = useTopPodcasts();
   const [podcasts, setPodcasts] = useState([]);
   const [filteredPodcasts, setFilteredPodcasts] = useState([]);
+  const [filterText, setFilterText] = useState("");
 
   const filterPodcasts = (query) => {
+    console.log("query", query);
+    if (!query) {
+      setFilteredPodcasts(podcasts);
+      return;
+    }
     const filtered = podcasts.filter((podcast) => {
-      return podcast.title.toLowerCase().includes(query.toLowerCase());
+      return podcast.title.label.toLowerCase().includes(query.toLowerCase());
     });
     setFilteredPodcasts(filtered);
   };
@@ -23,7 +29,14 @@ const PodcastProvider = ({ children }) => {
 
   return (
     <PodcastContext.Provider
-      value={{ podcasts, isError, isLoading, filterPodcasts, filteredPodcasts }}
+      value={{
+        isError,
+        isLoading,
+        filterPodcasts,
+        filteredPodcasts,
+        filterText,
+        setFilterText,
+      }}
     >
       {children}
     </PodcastContext.Provider>
