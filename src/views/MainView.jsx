@@ -1,4 +1,4 @@
-import PodcastsList from "../components/PodcastsList";
+import PodcastsList from "../components/PodcastList/PodcastsList";
 
 export const MainView = () => {
   return (

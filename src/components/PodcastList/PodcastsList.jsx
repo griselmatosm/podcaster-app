@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useTopPodcasts } from "../hooks/useTopPodcasts";
+import { useTopPodcasts } from "../../hooks/useTopPodcasts";
+import { PodcastCard } from "../PodastCard/PodcastCard";
 
 const PodcastsList = () => {
   const { data, isLoading, isError } = useTopPodcasts();
@@ -15,7 +16,7 @@ const PodcastsList = () => {
         {data.map((podcast) => (
           <li key={podcast.id.attributes["im:id"]}>
             <Link to={`/podcast/${podcast.id.attributes["im:id"]}`}>
-              {podcast["im:name"].label}
+              <PodcastCard podcast={podcast} />
             </Link>
           </li>
         ))}
