@@ -1,10 +1,10 @@
 import PodcastsList from "../components/PodcastList/PodcastsList";
+import { MainLayout } from "../layouts/MainLayout/MainLayout";
 
 export const MainView = () => {
   return (
-    <div>
-      <h1>Main View</h1>
+    <MainLayout>
       <PodcastsList />
-    </div>
+    </MainLayout>
   );
 };

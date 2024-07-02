@@ -1,5 +1,5 @@
-import React from 'react';
-import { Outlet, Link } from 'react-router-dom';
+import React from "react";
+import { Outlet, Link } from "react-router-dom";
 
 const App = () => {
   return (
@@ -11,9 +11,7 @@ const App = () => {
         {/* Aquí puedes agregar más elementos de la cabecera si es necesario */}
       </header>
 
-      <main>
-        <Outlet />
-      </main>
+      <Outlet />
 
       <footer>
         {/* Aquí puedes agregar el contenido del pie de página si es necesario */}
