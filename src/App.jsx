@@ -1,19 +1,14 @@
 import React from "react";
 import { Outlet, Link } from "react-router-dom";
 import { PodcastProvider } from "./contexts/PodcastContext";
+import { Header } from "./components/Header/Header";
 
 const App = () => {
   return (
     <PodcastProvider>
-      <div>
-        <header>
-          <h1>
-            <Link to="/">Podcaster</Link>
-          </h1>
-        </header>
-        <Outlet />
-        <footer></footer>
-      </div>
+      <Header className="header" title={<Link to="/">Podcaster</Link>} />
+      <Outlet />
+      <footer></footer>
     </PodcastProvider>
   );
 };
