@@ -1,7 +1,12 @@
+import PodcastsList from "../components/PodcastList/PodcastsList";
+import { Searcher } from "../components/Searcher/Searcher";
+import { MainLayout } from "../layouts/MainLayout/MainLayout";
+
 export const MainView = () => {
   return (
-    <div>
-      <h1>Main View</h1>
-    </div>
+    <MainLayout>
+      <Searcher />
+      <PodcastsList />
+    </MainLayout>
   );
 };

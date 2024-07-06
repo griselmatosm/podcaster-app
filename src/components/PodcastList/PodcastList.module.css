@@ -1,0 +1,7 @@
+.podcastList {
+  display: grid;
+  gap: 3rem;
+  grid-auto-rows: 22rem;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  justify-items: center;
+}
