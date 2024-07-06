@@ -8,15 +8,10 @@
   padding: 20px 10px;
   position: relative;
   background: white;
-  max-width: 250px;
+  width: 250px;
   align-items: stretch;
   gap: 15px;
   cursor: pointer;
-  transition: 0.3s;
-}
-
-.podcastCardDetail:hover {
-  transform: scale(1.05);
 }
 
 .image {

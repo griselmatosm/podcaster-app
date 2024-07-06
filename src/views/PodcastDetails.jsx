@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Outlet, Link, useParams } from "react-router-dom";
 import { PodcastContext } from "../contexts/PodcastContext";
+import { TwoColumnsLayout } from "../layouts/TwoColumnsLayout/TwoColumnsLayout";
 import { PodcastCardDetail } from "../components/PodcastCardDetail/PodcastCardDetail";
 
 export const PodcastDetails = () => {
@@ -12,11 +13,12 @@ export const PodcastDetails = () => {
   );
   console.log("selectedPodcast", selectedPodcast);
   return (
-    <aside>
+    <TwoColumnsLayout>
       <Link to={`/podcast/${podcastId}`}>
         <PodcastCardDetail podcast={selectedPodcast} />
       </Link>
+      <h2>Lista de episodios</h2>
       <Outlet />
-    </aside>
+    </TwoColumnsLayout>
   );
 };
