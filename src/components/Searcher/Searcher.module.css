@@ -12,6 +12,8 @@
   padding: 5px 10px;
   border-radius: 5px;
   font-weight: 600;
+  width: 30px;
+  text-align: center;
 }
 
 .searcherInput {

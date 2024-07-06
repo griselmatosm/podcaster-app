@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-import { useTopPodcasts } from "../hooks/useTopPodcasts";
+import { useTopPodcasts } from "../hooks/useTopPodcasts.ts";
 
 const PodcastContext = createContext();
 
@@ -10,7 +10,7 @@ const PodcastProvider = ({ children }) => {
   const [filterText, setFilterText] = useState("");
 
   const filterPodcasts = (query) => {
-    console.log("query", query);
+    setFilterText(query);
     if (!query) {
       setFilteredPodcasts(podcasts);
       return;
@@ -22,8 +22,10 @@ const PodcastProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    if (data) {
+    if (data && data.length) {
+      console.log("Setting podcasts data", data);
       setPodcasts(data);
+      setFilteredPodcasts(data);
     }
   }, [data]);
 

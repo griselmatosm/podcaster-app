@@ -2,7 +2,8 @@ import styles from "./PodcastList.module.css";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { PodcastContext } from "../../contexts/PodcastContext";
-import { PodcastCard } from "../PodastCard/PodcastCard";
+import { Card } from "../PodcastCardDetail/PodcastCardDetail";
+import { PodcastCard } from "../PodcastCard/PodcastCard";
 
 const PodcastsList = () => {
   const { filteredPodcasts, isError, isLoading } = useContext(PodcastContext);

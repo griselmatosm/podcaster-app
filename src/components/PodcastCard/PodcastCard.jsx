@@ -1,4 +1,5 @@
 import styles from "./PodcastCard.module.css";
+
 export const PodcastCard = ({ podcast }) => {
   return (
     <div className={styles.podcastCard}>

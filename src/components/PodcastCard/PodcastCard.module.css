@@ -9,6 +9,12 @@
   position: relative;
   background: white;
   max-width: 250px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.podcastCard:hover {
+  transform: scale(1.05);
 }
 
 .podcastCard img {
