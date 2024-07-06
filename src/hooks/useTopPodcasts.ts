@@ -24,12 +24,11 @@ interface Podcast {
   };
 };
 
-export const useTopPodcasts = () => {
+export const useTopPodcasts = (fallbackData) => {
   const { data, error, isLoading, isValidating } = useSWR(topPodcasts, fetcher, {
+    fallbackData,
     dedupingInterval: 86400000, // 1 day in miliseconds
   });
-
-  console.log("useTopPodcasts", data, error, isLoading);
 
   return {
     data: data?.feed?.entry || [],

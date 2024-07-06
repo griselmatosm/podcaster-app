@@ -11,7 +11,6 @@ export const PodcastDetails = () => {
   const selectedPodcast = filteredPodcasts.find(
     (podcast) => podcast.id.attributes["im:id"] === podcastId
   );
-  console.log("selectedPodcast", selectedPodcast);
   return (
     <TwoColumnsLayout>
       <Link to={`/podcast/${podcastId}`}>

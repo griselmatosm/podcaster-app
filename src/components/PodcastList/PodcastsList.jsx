@@ -1,13 +1,14 @@
 import styles from "./PodcastList.module.css";
 import { useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { useTopPodcasts } from "../../hooks/useTopPodcasts.ts";
 import { PodcastContext } from "../../contexts/PodcastContext";
 import { PodcastCard } from "../PodcastCard/PodcastCard";
 
 const PodcastsList = () => {
+  const loaderData = useLoaderData();
   const { filteredPodcasts, setFilteredPodcasts } = useContext(PodcastContext);
-  const { data: podcasts, isLoading, isValidating, isError } = useTopPodcasts();
+  const { data: podcasts, isLoading, isValidating, isError } = useTopPodcasts(loaderData);
 
   useEffect(() => {
     if (podcasts && podcasts.length) {
