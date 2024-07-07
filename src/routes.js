@@ -9,7 +9,16 @@ import { topPodcasts, podcastDetail, fetcher } from "./services/podcastService";
 const topPodcastsLoader = async () => {
   console.log("Loader is running");
   const data = await fetcher(topPodcasts);
-  return data.feed.entry;
+  const cleanData = data.feed.entry.map((podcast) => {
+    return {
+      id: podcast.id.attributes["im:id"],
+      title: podcast["im:name"].label,
+      image: podcast["im:image"][2].label,
+      author: podcast["im:artist"].label,
+      description: podcast.summary.label,
+    };
+  })
+  return cleanData;
 };
 
 const podcastDetailsLoader = async ({ params }) => {

@@ -8,13 +8,19 @@ import { PodcastCard } from "../PodcastCard/PodcastCard";
 const PodcastsList = () => {
   const loaderData = useLoaderData();
   const { filteredPodcasts, setFilteredPodcasts } = useContext(PodcastContext);
-  const { data: podcasts, isLoading, isValidating, isError } = useTopPodcasts(loaderData);
+  const {
+    isLoading,
+    isValidating,
+    isError,
+  } = useTopPodcasts(loaderData);
+
+  console.log("filteredPodcasts length", filteredPodcasts.length);
 
   useEffect(() => {
-    if (podcasts && podcasts.length) {
-      setFilteredPodcasts(podcasts);
+    if (loaderData) {
+      setFilteredPodcasts(loaderData);
     }
-  }, [podcasts, setFilteredPodcasts]);
+  }, [loaderData, setFilteredPodcasts]);
 
   if (isLoading || isValidating) return <div>Loading...</div>;
   if (isError) return <div>Error loading podcasts</div>;
