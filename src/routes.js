@@ -5,20 +5,12 @@ import { MainView } from "./views/MainView";
 import { PodcastDetails } from "./views/PodcastDetails";
 import { EpisodeDetails } from "./views/EpisodeDetails";
 import { topPodcasts, podcastDetail, fetcher } from "./services/podcastService";
+import { cleanPodcast } from "./utils/utils";
 
 const topPodcastsLoader = async () => {
-  console.log("Loader is running");
   const data = await fetcher(topPodcasts);
-  const cleanData = data.feed.entry.map((podcast) => {
-    return {
-      id: podcast.id.attributes["im:id"],
-      title: podcast["im:name"].label,
-      image: podcast["im:image"][2].label,
-      author: podcast["im:artist"].label,
-      description: podcast.summary.label,
-    };
-  })
-  return cleanData;
+  const cleanedData = cleanPodcast(data.feed.entry);
+  return cleanedData;
 };
 
 const podcastDetailsLoader = async ({ params }) => {
