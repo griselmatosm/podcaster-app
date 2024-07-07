@@ -18,4 +18,4 @@ export const fetcher = async (url) => {
 export const topPodcasts = `${API_URL}/us/rss/toppodcasts/limit=100/genre=1310/json`;
 
 export const podcastDetail = (podcastId) =>
-  `${API_URL}/lookup?id=${podcastId}&media=podcast&entity=podcastEpisode&limit=20`;
+  `${API_URL}/lookup?id=${podcastId}&media=podcast&entity=podcastEpisode`;

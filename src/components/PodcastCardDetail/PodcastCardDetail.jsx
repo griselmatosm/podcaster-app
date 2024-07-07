@@ -5,15 +5,15 @@ export const PodcastCardDetail = ({ podcast }) => {
     <div className={styles.podcastCardDetail}>
       <img
         className={styles.image}
-        alt={podcast["im:name"].label}
-        src={podcast["im:image"][2]["label"]}
+        alt={podcast.title}
+        src={podcast.image}
       />
       <hr />
-      <h3>{podcast["im:name"].label}</h3>
-      <em>by {podcast["im:artist"].label}</em>
+      <h3>{podcast.title}</h3>
+      <em>by {podcast.author}</em>
       <hr />
       <h3>Description:</h3>
-      <em>{podcast.summary.label}</em>
+      <em>{podcast.description}</em>
     </div>
   );
 };

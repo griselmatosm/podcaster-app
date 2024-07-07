@@ -22,8 +22,8 @@ const PodcastsList = () => {
   return (
     <ul className={styles.podcastList}>
       {filteredPodcasts.map((podcast) => (
-        <li key={podcast.id.attributes["im:id"]}>
-          <Link to={`/podcast/${podcast.id.attributes["im:id"]}`}>
+        <li key={podcast.id}>
+          <Link to={`/podcast/${podcast.id}`}>
             <PodcastCard podcast={podcast} />
           </Link>
         </li>

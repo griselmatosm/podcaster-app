@@ -12,15 +12,12 @@ interface Podcast {
   };
   "im:image": {
     label: string;
-    attributes: {
-      height: string;
-      width: string;
-    };
-  }[];
-  category: {
-    attributes: {
-      label: string;
-    };
+  };
+  "im:artist": {
+    label: string;
+  };
+  summary: {
+    label: string;
   };
 };
 
@@ -30,8 +27,18 @@ export const useTopPodcasts = (fallbackData) => {
     dedupingInterval: 86400000, // 1 day in miliseconds
   });
 
+  const cleanData = data?.feed?.entry?.map((podcast: Podcast) => {
+    return {
+      id: podcast.id.attributes["im:id"],
+      title: podcast["im:name"].label,
+      image: podcast["im:image"][2].label,
+      author: podcast["im:artist"].label,
+      description: podcast.summary.label,
+    };
+  });
+
   return {
-    data: data?.feed?.entry || [],
+    data: cleanData || [],
     isLoading,
     isValidating,
     isError: error,
