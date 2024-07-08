@@ -22,12 +22,11 @@ interface Podcast {
   };
 }
 
-export const useTopPodcasts = (fallbackData) => {
+export const useTopPodcasts = () => {
   const { data, error, isLoading, isValidating } = useSWR(
     topPodcasts,
     fetcher,
     {
-      fallbackData,
       dedupingInterval: 86400000, // 1 day in miliseconds
     }
   );

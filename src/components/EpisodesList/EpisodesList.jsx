@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useOutletContext } from "react-router-dom";
 import styles from "./EpisodesList.module.css";
 import { formatDate, formatDuration } from "../../utils/utils";
 
-export const EpisodesList = ({ episodes }) => {
+export const EpisodesList = () => {
+const episodes = useOutletContext();
+
   return (
     <div className={styles.episodesList}>
       <header className={styles.episodesListHeader}>

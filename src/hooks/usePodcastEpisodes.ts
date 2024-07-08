@@ -2,12 +2,12 @@ import useSWR from "swr";
 import { podcastDetail, fetcher } from "../services/podcastService";
 import { cleanEpisode } from "../utils/utils";
 
-export const usePodcastEpisodes = (podcastId, fallbackData) => {
+export const usePodcastEpisodes = (podcastId) => {
   const { data, error, isLoading, isValidating } = useSWR(
     podcastDetail(podcastId),
     fetcher,
     {
-      fallbackData,
+      dedupingInterval: 86400000, // 1 day in miliseconds
     }
   );
 
