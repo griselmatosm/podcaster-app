@@ -1,5 +1,6 @@
 import useSWR from "swr";
 import { podcastDetail, fetcher } from "../services/podcastService";
+import { cleanEpisode } from "../utils/utils";
 
 export const usePodcastEpisodes = (podcastId, fallbackData) => {
   const { data, error, isLoading, isValidating } = useSWR(
@@ -10,22 +11,10 @@ export const usePodcastEpisodes = (podcastId, fallbackData) => {
     }
   );
 
-  const filteredEpisodes = data?.results?.filter(
-    (episode) => episode.kind === "podcast-episode"
-  );
-
-  const cleanData = filteredEpisodes?.map((episode) => {
-    return {
-      id: episode.episodeGuid,
-      title: episode.trackName,
-      description: episode.description,
-      date: episode.releaseDate,
-      duration: episode.trackTimeMillis,
-    };
-  });
+  const cleanedData = cleanEpisode(data?.results);
 
   return {
-    data: cleanData || [],
+    data: cleanedData || [],
     isLoading,
     isValidating,
     isError: error,

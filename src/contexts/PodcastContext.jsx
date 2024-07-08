@@ -6,7 +6,6 @@ const PodcastProvider = ({ children }) => {
   const [filteredPodcasts, setFilteredPodcasts] = useState([]);
 
   const filterPodcasts = (query, podcasts) => {
-    console.log("query", query, "podcasts", podcasts);
     if (!query) {
       setFilteredPodcasts(podcasts);
       return;

@@ -6,21 +6,19 @@ import { PodcastContext } from "../../contexts/PodcastContext";
 import { PodcastCard } from "../PodcastCard/PodcastCard";
 
 const PodcastsList = () => {
-  const loaderData = useLoaderData();
+  const podcasts = useLoaderData();
   const { filteredPodcasts, setFilteredPodcasts } = useContext(PodcastContext);
   const {
     isLoading,
     isValidating,
     isError,
-  } = useTopPodcasts(loaderData);
-
-  console.log("filteredPodcasts length", filteredPodcasts.length);
+  } = useTopPodcasts(podcasts);
 
   useEffect(() => {
-    if (loaderData) {
-      setFilteredPodcasts(loaderData);
+    if (podcasts) {
+      setFilteredPodcasts(podcasts);
     }
-  }, [loaderData, setFilteredPodcasts]);
+  }, [podcasts, setFilteredPodcasts]);
 
   if (isLoading || isValidating) return <div>Loading...</div>;
   if (isError) return <div>Error loading podcasts</div>;
@@ -29,7 +27,7 @@ const PodcastsList = () => {
     <ul className={styles.podcastList}>
       {filteredPodcasts.map((podcast) => (
         <li key={podcast.id}>
-          <Link to={`/podcast/${podcast.id}`}>
+          <Link to={`podcast/${podcast.id}`}>
             <PodcastCard podcast={podcast} />
           </Link>
         </li>
