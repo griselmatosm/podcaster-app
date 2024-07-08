@@ -26,7 +26,7 @@ const episodes = useOutletContext();
                   <Link to={`episode/${episode.id}`}>{episode.title} </Link>
                 </td>
                 <td>{formatDate(episode.date)}</td>
-                <td>{formatDuration(episode.duration)}</td>
+                <td>{episode.duration ? formatDuration(episode.duration) : "Unknown"}</td>
               </tr>
             ))}
           </tbody>
