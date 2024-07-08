@@ -30,7 +30,7 @@ export const PodcastDetails = () => {
 
   return (
     <TwoColumnsLayout>
-      <Link to={`podcast/${podcastId}`}>
+      <Link to={`/podcast/${podcastId}`}>
         <PodcastCardDetail podcast={selectedPodcast} />
       </Link>
       <EpisodesList episodes={episodes} />
