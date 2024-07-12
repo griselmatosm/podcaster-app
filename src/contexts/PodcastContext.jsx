@@ -5,13 +5,13 @@ const PodcastContext = createContext();
 const PodcastProvider = ({ children }) => {
   const [filteredPodcasts, setFilteredPodcasts] = useState([]);
 
-  const filterPodcasts = (query, podcasts) => {
+  const filterPodcasts = ({ query, podcasts }) => {
     if (!query) {
       setFilteredPodcasts(podcasts);
       return;
     }
     const filtered = podcasts.filter((podcast) => {
-      return podcast.title.label.toLowerCase().includes(query.toLowerCase());
+      return podcast.title.toLowerCase().includes(query.toLowerCase());
     });
     setFilteredPodcasts(filtered);
   };

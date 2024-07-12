@@ -1,12 +1,14 @@
 import styles from "./Header.module.css";
-import { useNavigation } from "react-router-dom";
+import { useContext } from "react";
+import { LoadingContext } from "../../contexts/LoadingContext";
 import { Loader } from "../Loader/Loader";
 export const Header = ({ title }) => {
-  const { state } = useNavigation();
+  const { isLoading } = useContext(LoadingContext);
+
   return (
     <header className={styles.header}>
       <h1>{title}</h1>
-      {state === "loading" && <Loader />}
+      {isLoading && <Loader />}
     </header>
   );
 };

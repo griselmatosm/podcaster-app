@@ -1,23 +1,32 @@
-import { useContext } from "react";
+import { useEffect, useContext } from "react";
 import { Outlet, Link, useParams } from "react-router-dom";
-import { PodcastContext } from "../contexts/PodcastContext";
 import { TwoColumnsLayout } from "../layouts/TwoColumnsLayout/TwoColumnsLayout";
 import { PodcastCardDetail } from "../components/PodcastCardDetail/PodcastCardDetail";
+import { usePodcastDetails } from "../hooks/usePodcastDetails";
+import { usePodcasts } from "../hooks/usePodcasts";
+import { LoadingContext } from "../contexts/LoadingContext";
 
 export const PodcastDetails = () => {
   const { podcastId } = useParams();
-  const { filteredPodcasts } = useContext(PodcastContext);
+  const { data: episodes, isLoading, isError } = usePodcastDetails(podcastId);
+  const { data: podcasts } = usePodcasts();
+  const { setIsLoading } = useContext(LoadingContext);
 
-  const selectedPodcast = filteredPodcasts.find(
-    (podcast) => podcast.id.attributes["im:id"] === podcastId
-  );
+  useEffect(() => {
+    setIsLoading(isLoading);
+  }, [isLoading, setIsLoading]);
+
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Error loading podcast details</div>;
+
+  const selectedPodcast = podcasts?.find((podcast) => podcast.id === podcastId);
+
   return (
     <TwoColumnsLayout>
       <Link to={`/podcast/${podcastId}`}>
         <PodcastCardDetail podcast={selectedPodcast} />
       </Link>
-      <h2>Lista de episodios</h2>
-      <Outlet />
+      <Outlet context={episodes} />
     </TwoColumnsLayout>
   );
 };

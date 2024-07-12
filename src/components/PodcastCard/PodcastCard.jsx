@@ -4,11 +4,11 @@ export const PodcastCard = ({ podcast }) => {
   return (
     <div className={styles.podcastCard}>
       <img
-        alt={podcast["im:name"].label}
-        src={podcast["im:image"][2]["label"]}
+        alt={podcast.title}
+        src={podcast.image}
       />
-      <h3>{podcast["im:name"].label.toUpperCase()}</h3>
-      <p>Author: {podcast["im:artist"].label}</p>
+      <h3>{podcast.title.toUpperCase()}</h3>
+      <p>Author: {podcast.author}</p>
     </div>
   );
 };

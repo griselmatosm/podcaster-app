@@ -4,24 +4,24 @@ import App from "./App";
 import { MainView } from "./views/MainView";
 import { PodcastDetails } from "./views/PodcastDetails";
 import { EpisodeDetails } from "./views/EpisodeDetails";
-import { topPodcasts, fetcher } from "./services/podcastService";
-
-const topPodcastsLoader = async () => {
-  console.log('Loader is running');
-  const data = await fetcher(topPodcasts);
-  return data.feed.entry;
-};
+import { EpisodesList } from "./components/EpisodesList/EpisodesList";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
-      { index: true, element: <MainView />, loader: topPodcastsLoader },
       {
-        path: "/podcast/:podcastId",
+        index: true,
+        element: <MainView />,
+        errorElement: <div>Error loading top podcasts</div>,
+      },
+      {
+        path: "podcast/:podcastId",
         element: <PodcastDetails />,
+        errorElement: <div>Error loading podcast</div>,
         children: [
+          { index: true, element: <EpisodesList /> },
           {
             path: "episode/:episodeId",
             element: <EpisodeDetails />,
