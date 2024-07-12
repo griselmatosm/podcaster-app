@@ -10,6 +10,12 @@
 .episodePanelTitle,
 .episodePanelDescription {
   margin-bottom: 10px;
+  line-height: 1.5em;
+}
+
+.episodePanelDescription {
+  white-space: pre-wrap;
+  font-style: italic;
 }
 
 .episodePanelAudio {
@@ -19,6 +25,7 @@
   border-radius: 5px;
   overflow: hidden;
   color: var(--background-color);
+  margin-top: 35px;
 }
 
 .episodePanelAudio::-webkit-media-controls-panel {
