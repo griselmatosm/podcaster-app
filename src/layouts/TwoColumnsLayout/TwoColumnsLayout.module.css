@@ -1,6 +1,5 @@
 .twoColumnsLayout {
   display: grid;
-  grid-template-columns: 1fr 80%;
-  gap: 80px;
-  max-width: 90vw;
+  grid-template-columns: 30% 1fr;
+  gap: 50px;
 }

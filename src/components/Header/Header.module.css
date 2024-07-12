@@ -4,12 +4,12 @@
   justify-content: space-between;
   padding: 20px;
   height: 50px;
-  color: #3b6aae;
+  color: var(--primary-color);
   font-weight: 600;
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid var(--border-color);
   margin-bottom: 30px;
   position: sticky;
   top: 0;
   z-index: 10;
-  background-color: white;
+  background-color: var(--background-color);
 }
