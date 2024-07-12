@@ -11,11 +11,15 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
     children: [
-      { index: true, element: <MainView />,
+      {
+        index: true,
+        element: <MainView />,
+        errorElement: <div>Error loading top podcasts</div>,
       },
       {
         path: "podcast/:podcastId",
         element: <PodcastDetails />,
+        errorElement: <div>Error loading podcast</div>,
         children: [
           { index: true, element: <EpisodesList /> },
           {

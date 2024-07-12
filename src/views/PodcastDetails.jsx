@@ -1,28 +1,18 @@
-import { useContext, useEffect } from "react";
 import { Outlet, Link, useParams } from "react-router-dom";
-import { PodcastContext } from "../contexts/PodcastContext";
 import { TwoColumnsLayout } from "../layouts/TwoColumnsLayout/TwoColumnsLayout";
 import { PodcastCardDetail } from "../components/PodcastCardDetail/PodcastCardDetail";
-import { usePodcastEpisodes } from "../hooks/usePodcastEpisodes.ts";
-import { useTopPodcasts } from "../hooks/useTopPodcasts.ts";
+import { usePodcastDetails } from "../hooks/usePodcastDetails";
+import { usePodcasts } from "../hooks/usePodcasts";
 
 export const PodcastDetails = () => {
   const { podcastId } = useParams();
-  const { filteredPodcasts, setFilteredPodcasts } = useContext(PodcastContext);
+  const { data: episodes, isLoading, isError } = usePodcastDetails(podcastId);
+  const { data: podcasts } = usePodcasts();
 
-  const {data: podcasts, isLoading: isLoadingPodcasts} = useTopPodcasts();
-  const {data: episodes, isLoading, isValidating } = usePodcastEpisodes(podcastId);
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Error loading podcast details</div>;
 
-  useEffect(() => {
-    if (podcasts && podcasts.length > 0 && filteredPodcasts.length === 0) {
-      setFilteredPodcasts(podcasts);
-    }
-  }, [podcasts, filteredPodcasts.length, setFilteredPodcasts]);
-
-  const selectedPodcast = podcasts.find(
-    (podcast) => podcast.id === podcastId
-  );
-  if (isLoading || isValidating || isLoadingPodcasts) return <div>Loading...</div>;
+  const selectedPodcast = podcasts?.find((podcast) => podcast.id === podcastId);
 
   return (
     <TwoColumnsLayout>

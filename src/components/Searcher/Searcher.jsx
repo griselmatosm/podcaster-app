@@ -1,17 +1,17 @@
 import { useContext, useState } from "react";
 import styles from "./Searcher.module.css";
 import { PodcastContext } from "../../contexts/PodcastContext";
-import { useTopPodcasts } from "../../hooks/useTopPodcasts.ts";
+import { usePodcasts } from "../../hooks/usePodcasts";
 
 export const Searcher = () => {
   const { filteredPodcasts, filterPodcasts } = useContext(PodcastContext);
-  const { data: podcasts } = useTopPodcasts();
+  const { data: podcasts } = usePodcasts();
   const [filterText, setFilterText] = useState("");
 
   const handleFilterTextChange = (event) => {
     const { value } = event.target;
     setFilterText(value);
-    filterPodcasts(value, podcasts);
+    filterPodcasts({ query: value, podcasts });
   };
 
   return (

@@ -5,7 +5,7 @@ const PodcastContext = createContext();
 const PodcastProvider = ({ children }) => {
   const [filteredPodcasts, setFilteredPodcasts] = useState([]);
 
-  const filterPodcasts = (query, podcasts) => {
+  const filterPodcasts = ({ query, podcasts }) => {
     if (!query) {
       setFilteredPodcasts(podcasts);
       return;
