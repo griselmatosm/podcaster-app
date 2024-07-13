@@ -1,10 +1,10 @@
 import { useEffect, useContext } from "react";
 import { Outlet, Link, useParams } from "react-router-dom";
-import { TwoColumnsLayout } from "../layouts/TwoColumnsLayout/TwoColumnsLayout";
-import { PodcastCardDetail } from "../components/PodcastCardDetail/PodcastCardDetail";
-import { usePodcastDetails } from "../hooks/usePodcastDetails";
-import { usePodcasts } from "../hooks/usePodcasts";
-import { LoadingContext } from "../contexts/LoadingContext";
+import { TwoColumnsLayout } from "../../layouts/TwoColumnsLayout/TwoColumnsLayout";
+import { PodcastCardDetail } from "../../components/PodcastCardDetail/PodcastCardDetail";
+import { usePodcastDetails } from "../../hooks/usePodcastDetails";
+import { usePodcasts } from "../../hooks/usePodcasts";
+import { LoadingContext } from "../../contexts/LoadingContext";
 
 export const PodcastDetails = () => {
   const { podcastId } = useParams();

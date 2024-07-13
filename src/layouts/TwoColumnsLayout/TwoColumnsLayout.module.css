@@ -1,7 +1,9 @@
 .twoColumnsLayout {
   display: grid;
   grid-template-columns: 30% 1fr;
+  align-items: stretch;
   gap: 50px;
+  padding: 0 30px;
 }
 
 @media screen and (max-width: 1000px) {

@@ -2,7 +2,7 @@ import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import { MainView } from "./views/MainView";
-import { PodcastDetails } from "./views/PodcastDetails";
+import { PodcastDetails } from "./views/PodcastDetails/PodcastDetails";
 import { EpisodeDetails } from "./views/EpisodeDetails";
 import { EpisodesList } from "./components/EpisodesList/EpisodesList";
 
