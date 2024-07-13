@@ -1,5 +1,4 @@
 .mainLayout {
-  max-width: 90vw;
-  margin: 0 auto;
-  background: white;
+  background: var(--background-color);
+  padding: 0 30px;
 }

@@ -45,6 +45,7 @@ export const cleanEpisode = (episodeList) => {
         description: episode.description,
         date: episode.releaseDate,
         duration: episode.trackTimeMillis,
+        url: episode.episodeUrl,
       };
     });
 };
