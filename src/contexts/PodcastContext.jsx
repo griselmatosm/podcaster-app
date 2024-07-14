@@ -1,11 +1,11 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useCallback } from "react";
 
 const PodcastContext = createContext();
 
 const PodcastProvider = ({ children }) => {
   const [filteredPodcasts, setFilteredPodcasts] = useState([]);
 
-  const filterPodcasts = ({ query, podcasts }) => {
+  const filterPodcasts = useCallback(({ query, podcasts }) => {
     if (!query) {
       setFilteredPodcasts(podcasts);
       return;
@@ -14,7 +14,7 @@ const PodcastProvider = ({ children }) => {
       return podcast.title.toLowerCase().includes(query.toLowerCase());
     });
     setFilteredPodcasts(filtered);
-  };
+  }, []);
 
   return (
     <PodcastContext.Provider

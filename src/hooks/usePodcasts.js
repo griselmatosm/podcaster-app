@@ -1,23 +1,14 @@
 import { useState, useEffect } from "react";
-import { useContext } from "react";
 import { cleanPodcast } from "../utils/utils";
 import { fetcher, topPodcasts } from "../services/podcastService";
-import { LoadingContext } from "../contexts/LoadingContext";
+import { useLoadingState } from "../hooks/useLoadingState";
 
 export const usePodcasts = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
-  const { setIsLoading: setIsLoadingContext } = useContext(LoadingContext);
-
-  const setIsLoadingState = (isLoading) => {
-    if (!isLoading) {
-      setTimeout(() => setIsLoadingContext(isLoading), 3000);
-    } else {
-      setIsLoadingContext(isLoading);
-    }
-  };
+  const setIsLoadingState = useLoadingState();
 
   useEffect(() => {
     const checkAndFetchData = async () => {

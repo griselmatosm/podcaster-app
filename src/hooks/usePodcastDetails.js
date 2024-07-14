@@ -1,27 +1,21 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { cleanEpisode } from "../utils/utils";
 import { fetcher, podcastDetail } from "../services/podcastService";
-import { LoadingContext } from "../contexts/LoadingContext";
+import { useLoadingState } from "../hooks/useLoadingState";
 
 export const usePodcastDetails = (podcastId) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
-  const { setIsLoading: setIsLoadingContext } = useContext(LoadingContext);
-
-  const setIsLoadingState = (isLoading) => {
-    if (!isLoading) {
-      setTimeout(() => setIsLoadingContext(isLoading), 500);
-    } else {
-      setIsLoadingContext(isLoading);
-    }
-  };
-
+  const setIsLoadingState = useLoadingState();
 
   useEffect(() => {
+
+    console.log("entra a usePodcastDetails en usePodcastDetails");
     const checkAndFetchData = async () => {
       // Delay to ensure spinner visibility
+      console.log("entra a checkAndFetchData en usePodcastDetails");
       setIsLoadingState(true);
       setIsLoading(true);
 
