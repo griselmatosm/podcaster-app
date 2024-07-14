@@ -30,21 +30,24 @@ La aplicación sigue una arquitectura modular y escalable, dividida en component
    git clone https://github.com/griselmatosm/podcaster-app.git
 
 2. Navega al directorio del proyecto:
-  ```bash
-  cd podcaster-app
+   ```bash
+   cd podcaster-app
+
 3. Instala las dependencias:
-  ```bash
-npm install
+   ```bash
+   npm install
 
 ## Ejecución
 
 Para ejecutar la aplicación en modo desarrollo:
-    ```bash
+```bash
 npm run start
+```
 
 Para crear una versión de producción:
-    ```bash
+```bash
 npm run build
+```
 
 ## Funcionalidades
 - **Vista Principal**: Muestra los 100 podcasts más populares obtenidos de Apple Podcasts. Permite filtrar los podcasts por título y autor.
@@ -60,14 +63,18 @@ npm run build
 - **Indicadores de Carga y Errores**:
 Se implementaron indicadores visuales para mejorar la experiencia del usuario al cargar datos. Actualmente, se muestra un mensaje de "Loading..." mientras se cargan los datos y un mensaje de "Error loading podcasts" en caso de error. Sin embargo, este diseño no es el óptimo y se considera una mejora pendiente.
 
+```
 if (isLoading) return <div>Loading...</div>;
 if (isError) return <div>Error loading podcasts</div>;
+```
 
 ## Mejoras Pendientes
 - **TypeScript**: Aunque no se utilizó debido a la falta de dominio, se considera una mejora futura.
-- **Tests**: Faltan tests para algunos componentes. Se planea implementar tests completos para garantizar la calidad del código.
-**UI/UX**: Mejorar la UI/UX relacionada con los estados de carga y error para ofrecer una mejor experiencia al usuario.
-````
+- **Tests**: Faltan tests de componentes. Se planea implementar tests completos para garantizar la calidad del código.
+- **UI/UX**: Mejorar la UI/UX relacionada con los estados de carga y error para ofrecer una mejor experiencia al usuario.
+
+
+
 
 
 
