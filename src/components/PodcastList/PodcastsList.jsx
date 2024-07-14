@@ -6,7 +6,7 @@ import { LoadingContext } from "../../contexts/LoadingContext";
 import { PodcastCard } from "../PodcastCard/PodcastCard";
 import { usePodcasts } from "../../hooks/usePodcasts";
 
-const PodcastsList = () => {
+export const PodcastsList = () => {
   const { filteredPodcasts, setFilteredPodcasts } = useContext(PodcastContext);
   const { setIsLoading } = useContext(LoadingContext);
   const { data: podcasts, isLoading, isError } = usePodcasts();
@@ -35,5 +35,3 @@ const PodcastsList = () => {
     </ul>
   );
 };
-
-export default PodcastsList;

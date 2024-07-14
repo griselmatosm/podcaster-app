@@ -1,4 +1,4 @@
-import PodcastsList from "../components/PodcastList/PodcastsList";
+import { PodcastsList } from "../components/PodcastList/PodcastsList";
 import { Searcher } from "../components/Searcher/Searcher";
 import { MainLayout } from "../layouts/MainLayout/MainLayout";
 
