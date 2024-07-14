@@ -1,18 +1,17 @@
-import { useEffect, useContext } from "react";
+import { useEffect } from "react";
 import { useParams, useOutletContext } from "react-router-dom";
 import { EpisodePanel } from "../components/EpisodePanel/EpisodePanel";
-import { LoadingContext } from "../contexts/LoadingContext";
+import { useLoadingState } from "../hooks/useLoadingState";
 export const EpisodeDetails = () => {
   const { episodeId } = useParams();
   const episodes = useOutletContext();
-  const { setIsLoading } = useContext(LoadingContext);
+  const setIsLoading = useLoadingState();
 
   useEffect(() => {
     setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 500);
-  }, [episodeId, setIsLoading]);
+    setTimeout(() => setIsLoading(false), 500);
+  }, []);
+
   const episode = episodes.find(
     (episode) => JSON.stringify(episode.id) === episodeId
   );

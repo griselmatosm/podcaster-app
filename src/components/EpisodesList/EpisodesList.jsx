@@ -1,9 +1,17 @@
+import { useEffect } from "react";
 import { Link, useOutletContext } from "react-router-dom";
 import styles from "./EpisodesList.module.css";
 import { formatDate, formatDuration } from "../../utils/utils";
+import { useLoadingState } from "../../hooks/useLoadingState";
 
 export const EpisodesList = () => {
-const episodes = useOutletContext();
+  const episodes = useOutletContext();
+  const setIsLoading = useLoadingState();
+
+  useEffect(() => {
+    setIsLoading(true);
+    setTimeout(() => setIsLoading(false), 500);
+  }, []);
 
   return (
     <div className={styles.episodesList}>
@@ -26,7 +34,11 @@ const episodes = useOutletContext();
                   <Link to={`episode/${episode.id}`}>{episode.title} </Link>
                 </td>
                 <td>{formatDate(episode.date)}</td>
-                <td>{episode.duration ? formatDuration(episode.duration) : "Unknown"}</td>
+                <td>
+                  {episode.duration
+                    ? formatDuration(episode.duration)
+                    : "Unknown"}
+                </td>
               </tr>
             ))}
           </tbody>

@@ -4,11 +4,16 @@ import { Link } from "react-router-dom";
 import { PodcastContext } from "../../contexts/PodcastContext";
 import { PodcastCard } from "../PodcastCard/PodcastCard";
 import { usePodcasts } from "../../hooks/usePodcasts";
+import { useLoadingState } from "../../hooks/useLoadingState";
 
 export const PodcastsList = () => {
   const { filteredPodcasts, setFilteredPodcasts } = useContext(PodcastContext);
   const { data: podcasts, isLoading, isError } = usePodcasts();
+  const setIsLoading = useLoadingState();
 
+  useEffect(() => {
+    setIsLoading(isLoading);
+  }, [setIsLoading, isLoading]);
 
   useEffect(() => {
     setFilteredPodcasts(podcasts);

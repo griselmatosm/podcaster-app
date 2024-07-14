@@ -8,17 +8,10 @@ export const usePodcastDetails = (podcastId) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
-  const setIsLoadingState = useLoadingState();
-
   useEffect(() => {
 
     console.log("entra a usePodcastDetails en usePodcastDetails");
     const checkAndFetchData = async () => {
-      // Delay to ensure spinner visibility
-      console.log("entra a checkAndFetchData en usePodcastDetails");
-      setIsLoadingState(true);
-      setIsLoading(true);
-
       const cachedData = localStorage.getItem(`podcast-${podcastId}`);
       const lastFetched = localStorage.getItem(
         `podcast-${podcastId}-lastFetched`
@@ -31,7 +24,6 @@ export const usePodcastDetails = (podcastId) => {
 
         if (now - lastFetchedDate < oneDay) {
           setData(JSON.parse(cachedData));
-          setIsLoadingState(false);
           setIsLoading(false);
           return;
         }
@@ -55,7 +47,6 @@ export const usePodcastDetails = (podcastId) => {
         console.error("Error fetching data:", error);
         setIsError(true);
       } finally {
-        setIsLoadingState(false);
         setIsLoading(false);
       }
     };
