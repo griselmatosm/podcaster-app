@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+# Podcaster App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Descripción
 
-## Available Scripts
+Podcaster App es una aplicación de una sola página (SPA) para escuchar podcasts musicales. La aplicación tiene tres vistas principales:
 
-In the project directory, you can run:
+1. Vista principal con los 100 podcasts más populares.
+2. Vista de detalles de un podcast.
+3. Vista de detalles de un episodio de un podcast.
 
-### `npm start`
+## Tecnologías Utilizadas
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **React**: Librería principal para la creación de la SPA.
+- **CSS**: Uso de CSS para el diseño y la maquetación.
+- **ContextAPI**: Gestión de estado.
+- **React Router**: Para la navegación entre las vistas.
+- **Webpack**: Para el empaquetado de la aplicación.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Arquitectura
 
-### `npm test`
+La aplicación sigue una arquitectura modular y escalable, dividida en componentes para mantener la separación de responsabilidades:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Componentes**: Cada componente tiene una única responsabilidad y está diseñado para ser reutilizable.
+- **Hooks**: Uso de custom hooks para manejar la lógica del estado y las llamadas a la API.
 
-### `npm run build`
+## Instalación
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/griselmatosm/podcaster-app.git
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Navega al directorio del proyecto:
+  ```bash
+  cd podcaster-app
+3. Instala las dependencias:
+  ```bash
+npm install
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Ejecución
 
-### `npm run eject`
+Para ejecutar la aplicación en modo desarrollo:
+    ```bash
+npm run start
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Para crear una versión de producción:
+    ```bash
+npm run build
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Funcionalidades
+- **Vista Principal**: Muestra los 100 podcasts más populares obtenidos de Apple Podcasts. Permite filtrar los podcasts por título y autor.
+- **Detalles del Podcast**: Muestra la información detallada de un podcast seleccionado, incluyendo una lista de episodios.
+- **Detalles del Episodio**: Muestra información detallada de un episodio seleccionado y un reproductor de audio básico.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Decisiones de Diseño
+- **Gestión del Estado**: Se utilizó ContextAPI para manejar el estado de la aplicación debido a su simplicidad y eficiencia.
+- **Caché**: Se implementó almacenamiento en cliente para reducir las llamadas a la API y mejorar la eficiencia.
+- **Responsive**: La aplicación está diseñada para ser responsive y funcional en diferentes tamaños de pantalla.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Mejoras de UI/UX
+- **Indicadores de Carga y Errores**:
+Se implementaron indicadores visuales para mejorar la experiencia del usuario al cargar datos. Actualmente, se muestra un mensaje de "Loading..." mientras se cargan los datos y un mensaje de "Error loading podcasts" en caso de error. Sin embargo, este diseño no es el óptimo y se considera una mejora pendiente.
 
-## Learn More
+if (isLoading) return <div>Loading...</div>;
+if (isError) return <div>Error loading podcasts</div>;
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Mejoras Pendientes
+- **TypeScript**: Aunque no se utilizó debido a la falta de dominio, se considera una mejora futura.
+- **Tests**: Faltan tests para algunos componentes. Se planea implementar tests completos para garantizar la calidad del código.
+**UI/UX**: Mejorar la UI/UX relacionada con los estados de carga y error para ofrecer una mejor experiencia al usuario.
+````
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

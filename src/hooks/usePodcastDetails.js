@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { cleanEpisode } from "../utils/utils";
 import { fetcher, podcastDetail } from "../services/podcastService";
-import { useLoadingState } from "../hooks/useLoadingState";
 
 export const usePodcastDetails = (podcastId) => {
   const [data, setData] = useState([]);
@@ -9,8 +8,6 @@ export const usePodcastDetails = (podcastId) => {
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
-
-    console.log("entra a usePodcastDetails en usePodcastDetails");
     const checkAndFetchData = async () => {
       const cachedData = localStorage.getItem(`podcast-${podcastId}`);
       const lastFetched = localStorage.getItem(
